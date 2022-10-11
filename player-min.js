@@ -9,7 +9,7 @@ function init_api() {
     Flashphoner.init({});
     //Connect to WCS server over websockets
     session = Flashphoner.createSession({
-        urlServer: "wss://151.237.137.86" //specify the address of your WCS
+        urlServer: "wss://151.237.137.86:80" //specify the address of your WCS
     }).on(SESSION_STATUS.ESTABLISHED, function(session) {
         console.log("ESTABLISHED");
     });
