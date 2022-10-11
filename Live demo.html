@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0053)https://www.ipcamlive.com/examples/embed-iframe2.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+		<style>
+			body {
+				background-color: black;
+			}
+			
+			#contentdiv {
+				background-color: darkgray; 
+				max-width: 1280px; 
+				padding: 20px;
+				margin:0 auto;
+			}
+
+			#playeriframe { 
+				display: block; 
+				margin: auto;
+			}
+		</style>
+
+        <title>Live demo</title>
+        
+		<script src="./Live demo_files/jquery.min.js"></script>
+		<script>
+			var aspectratio = 16/9;         
+
+			$(window).on("load", function() { 
+				var width = Math.min($("#contentdiv").width(), 1024); 
+				var height = width / aspectratio;
+ 
+    			$('#playerdiv').html('<iframe id="playeriframe" src="//ipcamlive.com/player/player.php?alias={0}&autoplay=1" width="{1}px" height="{2}px" frameborder="0" allowfullscreen></iframe>'.format('wiezowieczachod', width, height));
+			});
+					
+			$(window).on("resize", function() {
+				var width = Math.min($("#contentdiv").width(), 1024);
+     			var height = width / aspectratio;
+ 
+     			$('#playeriframe').width(width).height(height);
+			});	
+
+			String.prototype.format = function () {
+    			var args = arguments;
+				return this.replace(/\{\{|\}\}|\{(\d+)\}/g, function (m, n) {
+      				if (m == "{{") { return "{"; }
+      				if (m == "}}") { return "}"; }
+      				return args[n];
+				});
+			};
+		</script>     
+    </head>
+    <body><bod>
+		<div id="contentdiv">
+			<h1>Here is a responsive example page</h1>
+			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+			<div id="playerdiv"><iframe id="playeriframe" src="./Live demo_files/player.html" width="1024px" height="576px" frameborder="0" allowfullscreen="" style="width: 669px; height: 376.312px;"></iframe></div>
+		</div>
+    
+
+</bod></body></html>
